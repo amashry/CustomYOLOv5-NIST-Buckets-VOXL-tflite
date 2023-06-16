@@ -1,35 +1,44 @@
-CustomYOLOv5-NIST-Buckets
-This repository provides a detailed guide to training a custom YOLOv5 object detection model for real-time identification of NIST buckets using drone imagery. The steps involved include data collection, labeling, model training, testing, and deployment.
+# CustomYOLOv5-NIST-Buckets-VOXL-tflite 
 
-Table of Contents
-Getting Started
-Data Collection
-Data Labeling
-Model Training
-Model Testing
-Model Deployment
-Ongoing Work
-Getting Started
+This repository provides a detailed documentaion for training a custom YOLOv5 object detection model for real-time identification of NIST buckets using ModalAi VOXL m500 drone. The steps include data collection, labeling, model training, testing, and deployment.
+
+## Table of Contents
+- [Getting Started](#getting-started)
+- [Data Collection](#data-collection)
+- [Data Labeling](#data-labeling)
+- [Model Training](#model-training)
+- [Model Testing Offboard](#model-testing-offboard)
+- [Model Deployment](#model-deployment-onboard)
+- [Ongoing Work](#ongoing-work)
+
+## Getting Started
+
 These instructions will guide you through the process of setting up your environment, collecting and preparing the dataset, and then using that data to train and test the YOLOv5 model. Lastly, we will discuss how to deploy the model on a VOXL1 drone.
 
-Data Collection
-Details about data collection, including drone set-up, the recording of tracking messages, and a Python script for converting ROS bag messages into image frames for the dataset, can be found in the Data Collection section.
+## Data Collection
 
-Data Labeling
-The labeling process, including steps to manually label images using Roboflow and exporting the labeled dataset, can be found in the Data Labeling section.
+For details about data collection, including drone set-up, recording of tracking messages, and a Python script for converting ROS bag messages into image frames for the dataset, please refer to [DataCollection.md](DataCollection.md).
 
-Model Training
-The model training process, including uploading images to Google Colab and training the model using YOLOv5, can be found in the Model Training section.
+## Data Labeling
 
-Model Testing
-The model testing process, which involves recording the output of rqt_image_view on a local machine and running the YOLOv5 ROS node, is described in the Model Testing section.
+For information about the labeling process, including steps to manually label images using Roboflow and exporting the labeled dataset, please refer to [DataLabeling.md](DataLabeling.md).
 
-Model Deployment
-The process of converting the model to a .tflite format that is compatible with voxl-tflite-server, including quantization and deployment, can be found in the Model Deployment section. Note: this process is still ongoing.
+## Model Training
 
-Ongoing Work
-We are currently working on converting the .pt model to a .tflite model that works with the voxl-tflite-server. Check out the Ongoing Work section for updates on our progress and challenges.
+For a guide on the model training process, including uploading images to Google Colab and training the model using YOLOv5, please refer to [ModelTraining.md](ModelTraining.md).
 
-Building and Deploying VOXL Packages
-Detailed instructions for editing, compiling, building, and deploying VOXL packages can be found in the VOXL Packages section.
+## Model Testing Offboard
 
+For a walkthrough of the model testing process, which involves recording the output of rqt_image_view on a local machine and running the YOLOv5 ROS node, please refer to [ModelTesting.md](ModelTesting.md).
+
+## Model Deployment Onboard
+
+For a tutorial on the process of converting the model to a .tflite format that is compatible with voxl-tflite-server, including quantization and deployment, please refer to [ModelDeployment.md](ModelDeployment.md). Note: this process is still ongoing.
+
+## Ongoing Work
+
+For updates on our current work on converting the .pt model to a .tflite model that works with the voxl-tflite-server, check out [OngoingWork.md](OngoingWork.md).
+
+## Building and Deploying VOXL Packages
+
+For detailed instructions for editing, compiling, building, and deploying VOXL packages, please refer to [VOXLPackages.md](VOXLPackages.md).
