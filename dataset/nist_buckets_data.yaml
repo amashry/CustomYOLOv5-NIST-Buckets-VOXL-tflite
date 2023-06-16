@@ -1,0 +1,19 @@
+names:
+- bucket-1
+- bucket-1a
+- bucket-2
+- bucket-2a
+- bucket-3
+- bucket-3a
+- bucket-4
+- bucket-4a
+nc: 8
+roboflow:
+  license: CC BY 4.0
+  project: nist-automation-buckets-detection
+  url: https://universe.roboflow.com/nist-autonomous-inspection/nist-automation-buckets-detection/dataset/1
+  version: 1
+  workspace: nist-autonomous-inspection
+test: ../test/images
+train: /content/datasets/NIST-Automation-Buckets-Detection-1/train/images
+val: /content/datasets/NIST-Automation-Buckets-Detection-1/valid/images
