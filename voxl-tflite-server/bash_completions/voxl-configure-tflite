@@ -1,0 +1,11 @@
+
+_voxl-configure-tflite(){
+	local OPTS=('help enable factory_enable disable factory_disable')
+	COMPREPLY=()
+	if [ "$COMP_CWORD" -eq 1 ]; then
+		COMPREPLY=( $(compgen -W '${OPTS}' -- ${COMP_WORDS[COMP_CWORD]}) )
+		return 0
+	fi
+}
+
+complete -F _voxl-configure-tflite voxl-configure-tflite
