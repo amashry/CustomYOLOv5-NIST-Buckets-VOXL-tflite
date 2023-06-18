@@ -238,8 +238,9 @@ static void* inference_worker(void* data)
             pipe_server_write_camera_frame(IMAGE_CH, new_frame->metadata, (char*)output_image.data);
         }
         else if (post_type == YOLO){
+            int32_t kNumberOfClass = 80;
             std::vector<ai_detection_t> detections;
-            if (!inf_helper->postprocess_yolov5(output_image, detections, last_inference_time)) continue;
+            if (!inf_helper->postprocess_yolov5(output_image, detections, last_inference_time, kNumberOfClass)) continue;
             if (!detections.empty()){
                 for (unsigned int i = 0; i < detections.size(); i++){
                     pipe_server_write(DETECTION_CH, (char*)&detections[i], sizeof(ai_detection_t));
@@ -249,8 +250,9 @@ static void* inference_worker(void* data)
             pipe_server_write_camera_frame(IMAGE_CH, new_frame->metadata, (char*)output_image.data);
         }
         else if (post_type == NIST){
+            int32_t kNumberOfClass = 8;
             std::vector<ai_detection_t> detections;
-            if (!inf_helper->postprocess_yolo_Nist(output_image, detections, last_inference_time)) continue;
+            if (!inf_helper->postprocess_yolo_Nist(output_image, detections, last_inference_time,kNumberOfClass)) continue;
             if (!detections.empty()){
                 for (unsigned int i = 0; i < detections.size(); i++){
                     pipe_server_write(DETECTION_CH, (char*)&detections[i], sizeof(ai_detection_t));

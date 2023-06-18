@@ -740,8 +740,8 @@ bool InferenceHelper::postprocess_posenet(cv::Mat &output_image, double last_inf
 // straight up stolen from https://github.com/iwatake2222/play_with_tflite/blob/master/pj_tflite_det_yolov5/image_processor/detection_engine.cpp
 static constexpr int32_t kGridScaleList[] = { 8, 16, 32 };
 static constexpr int32_t kGridChannel = 3;
-static constexpr int32_t kNumberOfClass = 80;
-static constexpr int32_t kElementNumOfAnchor = kNumberOfClass + 5;    // x, y, w, h, bbox confidence, [class confidence]
+// static constexpr int32_t kNumberOfClass = 80;
+// static constexpr int32_t kElementNumOfAnchor = kNumberOfClass + 5;    // x, y, w, h, bbox confidence, [class confidence]
 static constexpr float threshold_box_confidence_   = 0.40;    // not sure if this is too low or high yet
 static constexpr float threshold_class_confidence_ = 0.20;    // not sure if this is too low or high yet
 static constexpr float threshold_nms_iou_ = 0.50;    // not sure if this is too low or high yet
@@ -758,8 +758,9 @@ typedef struct b_box{
     int32_t h;
 } b_box;
 
-static void get_bbox(const float* data, float scale_x, float  scale_y, int32_t grid_w, int32_t grid_h, std::vector<b_box>& bbox_list)
+static void get_bbox(int32_t kNumberOfClass,const float* data, float scale_x, float  scale_y, int32_t grid_w, int32_t grid_h, std::vector<b_box>& bbox_list)
 {
+    int32_t kElementNumOfAnchor = kNumberOfClass + 5;
     int actual_loops = 0;
     int n_skipped = 0;
     int32_t index = 0;
@@ -840,8 +841,10 @@ static void nms(std::vector<b_box>& bbox_list, std::vector<b_box>& bbox_nms_list
     }
 }
 
-bool InferenceHelper::postprocess_yolov5(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time){
+bool InferenceHelper::postprocess_yolov5(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time, int32_t kNumberOfClass){
     start_time = rc_nanos_monotonic_time();
+
+    int32_t kElementNumOfAnchor = kNumberOfClass + 5;
 
     // yolo has just one fat float output tensor
     TfLiteTensor* output_locations    = interpreter->tensor(interpreter->outputs()[0]);
@@ -854,7 +857,7 @@ bool InferenceHelper::postprocess_yolov5(cv::Mat &output_image, std::vector<ai_d
         int32_t grid_h = model_height / scale;
         float scale_x = static_cast<float>(input_width);
         float scale_y = static_cast<float>(input_height);
-        get_bbox(output_tensor, scale_x, scale_y, grid_w, grid_h, bbox_list);
+        get_bbox(kNumberOfClass, output_tensor, scale_x, scale_y, grid_w, grid_h, bbox_list);
         output_tensor += grid_w * grid_h * kGridChannel * kElementNumOfAnchor; 
     }
 
@@ -904,15 +907,13 @@ bool InferenceHelper::postprocess_yolov5(cv::Mat &output_image, std::vector<ai_d
 
 
 ///////////////// ADDING CUSTOM YOLOv5 MODEL - NIST YOLOv5 MODEL /////////////////////////////////////////////////////////////////////////////////////
-static constexpr int32_t kNumberOfClass_NIST = 8; // Changed this to 8 number of classes representing 8 buckets to be detected
-static constexpr int32_t kElementNumOfAnchor_NITS = kNumberOfClass_NIST + 5;    // x, y, w, h, bbox confidence, [class confidence]
+// straight up stolen from https://github.com/iwatake2222/play_with_tflite/blob/master/pj_tflite_det_yolov5/image_processor/detection_engine.cpp
 
 
-
-
-bool InferenceHelper::postprocess_yolo_Nist(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time){
+bool InferenceHelper::postprocess_yolo_Nist(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time, int32_t kNumberOfClass){
     start_time = rc_nanos_monotonic_time();
 
+    int32_t kElementNumOfAnchor = kNumberOfClass + 5;
     // yolo has just one fat float output tensor
     TfLiteTensor* output_locations    = interpreter->tensor(interpreter->outputs()[0]);
     float* output_tensor  = TensorData<float>(output_locations, 0);
@@ -924,8 +925,8 @@ bool InferenceHelper::postprocess_yolo_Nist(cv::Mat &output_image, std::vector<a
         int32_t grid_h = model_height / scale;
         float scale_x = static_cast<float>(input_width);
         float scale_y = static_cast<float>(input_height);
-        get_bbox(output_tensor, scale_x, scale_y, grid_w, grid_h, bbox_list);
-        output_tensor += grid_w * grid_h * kGridChannel * kElementNumOfAnchor_NITS; 
+        get_bbox(kNumberOfClass,output_tensor, scale_x, scale_y, grid_w, grid_h, bbox_list);
+        output_tensor += grid_w * grid_h * kGridChannel * kElementNumOfAnchor; 
     }
 
     std::vector<b_box> bbox_nms_list;
@@ -971,7 +972,6 @@ bool InferenceHelper::postprocess_yolo_Nist(cv::Mat &output_image, std::vector<a
 
     return true;
 }
-
 //////////////////////// END OF CUSTOM MODEL ///////////////////////////////////////////////////////
 
 void InferenceHelper::print_summary_stats(){

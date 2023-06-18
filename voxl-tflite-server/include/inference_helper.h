@@ -63,8 +63,8 @@ class InferenceHelper
         bool postprocess_segmentation(camera_image_metadata_t &meta, cv::Mat &output_image, double last_inference_time);
         bool postprocess_classification(cv::Mat &output_image, double last_inference_time, int tensor_offset);
         bool postprocess_posenet(cv::Mat &output_image, double last_inference_time);
-        bool postprocess_yolov5(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time);
-        bool postprocess_yolo_Nist(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time);
+        bool postprocess_yolov5(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time, int32_t kNumberOfClass);
+        bool postprocess_yolo_Nist(cv::Mat &output_image, std::vector<ai_detection_t>& detections_vector, double last_inference_time, int32_t kNumberOfClass);
 
         // summary timing stats
         void print_summary_stats();

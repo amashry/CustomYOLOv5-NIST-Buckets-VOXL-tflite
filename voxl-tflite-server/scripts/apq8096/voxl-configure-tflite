@@ -207,7 +207,7 @@ done
 
 echo ""
 echo -e "Select a model to use with the tflite-server:\n (1) Mobilenet - object detection\n (2) FastDepth - monocular depth estimation\n (3) Deeplab - cityscapes segmentation\n (4) EfficientNet - image classification\n (5) Posenet - pose estimation\n (6) Yolov5 - object detection\n (7) NIST - bucket detection\n"
-select opt in "1" "2" "3" "4" "5" "6"; do
+select opt in "1" "2" "3" "4" "5" "6" "7"; do
 case $opt in
 1 )
 	set_param_string model "/usr/bin/dnn/ssdlite_mobilenet_v2_coco.tflite"
@@ -227,7 +227,7 @@ case $opt in
 6 )
 	set_param_string model "/usr/bin/dnn/yolov5_float16_quant.tflite"
 	break;;
-6 )
+7 )
 	set_param_string model "/usr/bin/dnn/nistYolo_float16_quant.tflite"
 	break;;
 

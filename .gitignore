@@ -4,9 +4,9 @@ build32
 build64
 *.ipk
 *.deb
-pkg/IPK
-pkg/DEB
-pkg/data
+voxl-tflite-server/pkg/IPK
+voxl-tflite-server/pkg/DEB
+voxl-tflite-server/pkg/data
 *.core
 .vscode
 demo_scripts
