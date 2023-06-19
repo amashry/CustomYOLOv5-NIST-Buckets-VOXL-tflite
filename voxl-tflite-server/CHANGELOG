@@ -1,0 +1,67 @@
+0.3.1
+    * changes for static libs, support for newer tflite versions
+0.3.0
+    * **almost** feature parity for apq8096, now running tflite v2.8.0 as well
+    * added all models for qrb5165 tp apq8096 package
+0.2.7
+    * add support for running on the primary camera of a stereo pair (apq)
+    * added optimization flags for compilation
+0.2.6
+    * yolov5 now sending ai_detection_t packets
+    * added support for nnapi quantized mobilenet variants
+    * added cpu affinity set for qrb5165
+0.2.5
+    * yolov5 support added
+    * cleaned up postprocessing funcs extra args
+    * added colored bboxes for mobilenet + yolo
+    * updated skip_n_frames default to 0
+    * added new normalizationtype enum, since mobilenet doesn't play nicely with a hard / 255.0
+    * fps + inference timer added to tp left of images (NO running avgs, frame by frame update)
+    * cleaned up deeplab overlay, now an image blend of input + output
+0.2.4
+    * voxl-configure-tflite for qrb5165 cleaned up, added posenet and stereo options
+    * cmake fallthrough warning cleared
+    * stereo case updated to ensure only left image is used and sent from pair
+0.2.3
+    * fresh ci release
+0.2.2
+    * New CI Stuff
+0.2.1
+    * nv21/12 unique handling
+    * posenet model + support
+    * multiple instance support via config def
+    * raw8 stereo handling, will use left frame of pair
+0.2.0
+    * major rework, new generic inference helper class
+    * ai detection t type updated (compatible with latest mpa-to-ros)
+    * updated delegates and compatibility with tf2.6.2
+    * removed Midas V2, replaced with fastdepth
+    * added deeplab v3 for semantic segmentation on cityscapes dataset
+    * added efficientnet lite for npu classification on imagenet dataset
+0.1.9
+    * headers and deps updated, now dependent on voxl-tflite >= 2.2.3-1
+0.1.8
+    * added midas v2 for monocular depth estimation option
+0.1.7
+    * added tflite detection data output pipe
+0.1.6
+    * update metadata check for color vs raw8 input
+    * update config file for correct hires pipe name
+0.1.5
+    * update hires pipe name to match camera server 0.8.0+
+0.1.4
+    * updated CMake flags + libs for new voxl-tflite (v2.2.3)
+0.1.3
+    * bug fix for __ANDROID__ define in tensorflow + libmodal pipe headers
+0.1.2
+    * handling for any input size
+    * defaults to color output when hires input is selected (reverted)
+0.1.1
+    * patch for raw8 out
+0.1.0
+    * mobilenet v2
+    * add our own resize function
+0.0.4
+    * first release
+0.0.3
+    * Rename Repo to voxl-tflite-server

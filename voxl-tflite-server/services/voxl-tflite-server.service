@@ -1,0 +1,18 @@
+#
+# Copyright (c) 2020 ModalAI, Inc.
+#
+
+[Unit]
+Description=voxl-tflite-server
+SourcePath=/usr/bin/voxl-tflite-server
+
+[Service]
+User=root
+Type=simple
+PIDFile=/run/voxl-tflite-server.pid
+Restart=on-failure
+ExecStart=/bin/bash -c "/usr/bin/voxl-tflite-server"
+
+[Install]
+WantedBy=multi-user.target
+
