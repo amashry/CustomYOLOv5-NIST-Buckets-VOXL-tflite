@@ -1,6 +1,6 @@
 # Model Testing Offbard
 
-Model testing was carried out on a local machine.
+I started with tesing the model offboard on my local machine, where it was running the object detection model on the camera stream from the drone.
 
 ## Procedure
 
