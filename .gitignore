@@ -2,7 +2,7 @@
 build
 build32
 build64
-*.ipk
+# *.ipk
 *.deb
 voxl-tflite-server/pkg/IPK
 voxl-tflite-server/pkg/DEB
