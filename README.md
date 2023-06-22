@@ -33,6 +33,8 @@ For a guide on the model training process, including uploading images to Google 
 
 For a walkthrough of the model testing process, which involves recording the output of rqt_image_view on a local machine and running the YOLOv5 ROS node, please refer to [ModelTesting.md](ModelTesting.md).
 
+![ezgif com-video-to-gif](https://github.com/amashry/CustomYOLOv5-NIST-Buckets-VOXL-tflite/assets/98168605/5b930562-386d-4910-bc39-9ca6ffb906f8)
+
 
 ## Model Deployment Onboard
 
@@ -42,3 +44,4 @@ For a tutorial on the process of converting the model to a .tflite format that i
 ## Building and Deploying VOXL Packages
 
 For detailed instructions for editing, compiling, building, and deploying VOXL packages, please refer to [VOXLPackages.md](VOXLPackages.md).
+
