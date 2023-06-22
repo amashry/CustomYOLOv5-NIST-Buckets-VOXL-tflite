@@ -1,4 +1,4 @@
-#### FOR NOW I WILL ADD MODALAI'S SCRIPT ... CHANGE LATER TO THE SCRIPT THAT WORKS #### 
+#### The following is copied from ModalAi Documentation website #### 
 
 # IF ON VOXL 1, MAKE SURE TF VERSION IS <= 2.2.3
 # i.e., pip install tensorflow==2.2.3
