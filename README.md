@@ -45,3 +45,4 @@ For a tutorial on the process of converting the model to a .tflite format that i
 
 For detailed instructions for editing, compiling, building, and deploying VOXL packages, please refer to [VOXLPackages.md](VOXLPackages.md).
 
+![trial_2_Manual_Inspection_Onboard_Detection_AdobeExpress](https://github.com/amashry/CustomYOLOv5-NIST-Buckets-VOXL-tflite/assets/98168605/6dda916d-a70a-4a22-8afd-9c39313d0b38)
