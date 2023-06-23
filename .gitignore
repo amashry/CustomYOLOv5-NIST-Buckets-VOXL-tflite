@@ -11,3 +11,4 @@ voxl-tflite-server/pkg/data
 .vscode
 demo_scripts
 .gitconfig
+.gitattributes
