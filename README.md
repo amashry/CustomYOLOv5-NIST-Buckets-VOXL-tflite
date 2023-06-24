@@ -123,7 +123,9 @@ Refer to the `voxl-tflite-server` directory to review the changes made in the ab
 
 After modifying the source code, follow the steps in the readme file within the `voxl-tflite-server` directory as instructed by ModalAI. I've also added the compiled `.ipk` package after modifying, building, and packaging the source code. If you wish to clone the same functionality onto your voxl drone, download the compiled `.ipk` package, push it to your drone, and install it using `opkg install voxl-tflite-server_0.3.1.ipk --force-reinstall`. 
 
-https://github.com/amashry/CustomYOLOv5-NIST-Buckets-VOXL-tflite/assets/98168605/2d0f1383-8129-486f-8e4c-2c7c05f8915a
+# Demo Video 
+https://github.com/amashry/CustomYOLOv5-NIST-Buckets-VOXL-tflite/assets/98168605/d984d54f-a96f-4c63-9ee6-2399b6d475f5
+
 
 
 _The above video demonstrates the system in action. The drone autonomously inspects the buckets, runs onboard detection, and streams the output on the VOXL portal (right). It also shows offboard detection running on my local machine (middle), highlighting the time difference between onboard and offboard detection._
