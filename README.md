@@ -1,6 +1,6 @@
 # CustomYOLOv5-NIST-Buckets-VOXL-tflite 
 
-This repository provides detailed documentation for training a custom YOLOv5 object detection model for real-time identification of NIST buckets using the ModalAi VOXL m500 drone. The process is outlined in steps that include data collection, labeling, model training, off-board testing, and deployment and on-board testing on the drone.
+This repository provides detailed documentation for training a custom YOLOv5 object detection model for real-time identification of NIST buckets using the ModalAi VOXL m500 drone. The process is outlined in steps that include data collection, labeling, model training, off-board testing, and deployment and on-board testing on the drone. I've also the voxl-tflite-server ipk package file if you want to deploy to your voxl drone and test it right away.  
 
 <p align="center">
   <img src="https://github.com/amashry/CustomYOLOv5-NIST-Buckets-VOXL-tflite/assets/98168605/d7b287b1-2bf2-49bb-a67a-17d0d5a27b0f">  
